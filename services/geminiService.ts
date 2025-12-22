@@ -3,7 +3,12 @@ import { GoogleGenAI } from "@google/genai";
 import { FormData, IllustrationStyle } from "../types";
 
 export const generateGreetingMessage = async (data: FormData): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    return "【設定エラー】APIキーが設定されていません。VercelのDashboard > Settings > Environment Variables にて「API_KEY」を設定してください。";
+  }
+
+  const ai = new GoogleGenAI({ apiKey: apiKey });
   
   const prompt = `
     世帯主名: ${data.name}
@@ -22,12 +27,17 @@ export const generateGreetingMessage = async (data: FormData): Promise<string> =
     return response.text || "文章の生成に失敗しました。";
   } catch (error) {
     console.error("Text generation error:", error);
-    throw error;
+    return "申し訳ありません。アクセスが集中しているか、設定に誤りがあるため文章を生成できませんでした。";
   }
 };
 
 export const transformImageToIllustration = async (base64Image: string, style: IllustrationStyle = 'standard'): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("APIキーが設定されていません。");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: apiKey });
   const base64Data = base64Image.split(',')[1] || base64Image;
   const mimeType = base64Image.substring(base64Image.indexOf(':') + 1, base64Image.indexOf(';')) || 'image/jpeg';
 
@@ -57,7 +67,12 @@ export const transformImageToIllustration = async (base64Image: string, style: I
 };
 
 export const editImageWithPrompt = async (base64Image: string, promptText: string): Promise<string> => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    throw new Error("APIキーが設定されていません。");
+  }
+
+  const ai = new GoogleGenAI({ apiKey: apiKey });
   
   // Handle data URI scheme if present
   const base64Data = base64Image.includes(',') ? base64Image.split(',')[1] : base64Image;
