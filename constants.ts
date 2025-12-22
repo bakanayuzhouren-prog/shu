@@ -1,5 +1,5 @@
 
-import { Template, LayoutConfig } from './types.ts';
+import { Template, LayoutConfig } from './types';
 
 export const GREETING_TEMPLATES: Template[] = [
   {
