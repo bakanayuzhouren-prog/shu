@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
   // Vercelなどの環境変数を読み込む
   // process.cwd() はNode環境で実行されるため安全に使用可能
+  // 第3引数を空文字にすることで、VITE_プレフィックス以外の変数(API_KEYなど)も読み込む
   const env = loadEnv(mode, process.cwd(), '');
   return {
     plugins: [react()],

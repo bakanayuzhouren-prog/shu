@@ -34,7 +34,7 @@ export const generateGreetingMessage = async (data: FormData): Promise<string> =
 export const transformImageToIllustration = async (base64Image: string, style: IllustrationStyle = 'standard'): Promise<string> => {
   const apiKey = process.env.API_KEY;
   if (!apiKey) {
-    throw new Error("APIキーが設定されていません。");
+    throw new Error("APIキーが設定されていません。Vercelの環境変数を確認してください。");
   }
 
   const ai = new GoogleGenAI({ apiKey: apiKey });

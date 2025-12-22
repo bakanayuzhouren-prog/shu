@@ -1,15 +1,5 @@
-declare namespace NodeJS {
-  interface ProcessEnv {
-    readonly API_KEY: string;
-  }
-}
 
-// Fix: Define ImportMetaEnv interface to resolve "Cannot find name 'ImportMetaEnv'" error
-interface ImportMetaEnv {
-  readonly API_KEY: string;
-  [key: string]: any;
-}
+/// <reference types="vite/client" />
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
+// @types/node がインストールされているため、process.env の型は自動的に解決されます。
+// ここでの手動定義は削除し、標準のVite型定義を使用します。
