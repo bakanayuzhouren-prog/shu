@@ -10,24 +10,32 @@ Google Gemini APIを活用した、新築一戸建て向け引っ越し挨拶状
 - **PWA対応**: スマホのホーム画面に追加してアプリとして利用可能。
 - **セキュリティ**: パスコードロック機能により、共有端末でも安心。
 
-## 🚀 セットアップ（開発者向け）
+## 🚀 デプロイと設定 (GitHub & Vercel)
 
-1. **環境変数の設定**
-   `.env.example` を `.env` にコピーし、Google AI Studioで取得したAPIキーを設定してください。
+このアプリはGitHubとVercelを使って簡単に無料で公開できます。
+
+1. **Google Gemini APIキーの取得**
+   [Google AI Studio](https://aistudio.google.com/app/apikey) でAPIキーを取得してください。
+
+2. **ローカルでの開発**
+   `.env` ファイルを作成し、APIキーを設定します。
    ```bash
-   VITE_GEMINI_API_KEY=YOUR_API_KEY_HERE
+   API_KEY=your_api_key_here
    ```
-
-2. **インストールと起動**
+   
+   インストールと起動:
    ```bash
    npm install
    npm run dev
    ```
 
-3. **ビルド**
-   ```bash
-   npm run build
-   ```
+3. **Vercelへのデプロイ**
+   - GitHubにこのリポジトリをPushします。
+   - Vercelで "New Project" からリポジトリをインポートします。
+   - **Environment Variables** (環境変数) の設定で以下を追加します:
+     - Name: `API_KEY`
+     - Value: (取得したGemini APIキー)
+   - [Deploy] をクリックすれば完了です！
 
 ## 🛠 技術スタック
 - **Frontend**: React, TypeScript, Tailwind CSS

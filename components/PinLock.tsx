@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 interface PinLockProps {
@@ -63,7 +64,7 @@ const PinLock: React.FC<PinLockProps> = ({ mode, onUnlock, onSetPin, onCancelSet
       <div className="w-full max-w-xs flex flex-col items-center">
         
         <div className="mb-8 text-center">
-          <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner">
+          <div className="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-inner border border-gray-700">
             {mode === 'locked' ? '🔒' : '🛡️'}
           </div>
           <h2 className="text-xl font-bold mb-2">
@@ -81,14 +82,14 @@ const PinLock: React.FC<PinLockProps> = ({ mode, onUnlock, onSetPin, onCancelSet
             <div 
               key={i} 
               className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                i < input.length ? 'bg-blue-500 scale-110 shadow-[0_0_10px_rgba(59,130,246,0.5)]' : 'bg-gray-700'
+                i < input.length ? 'bg-green-600 scale-110 shadow-[0_0_10px_rgba(22,163,74,0.5)]' : 'bg-gray-700'
               }`}
             />
           ))}
         </div>
 
         {error && (
-           <div className="mb-6 text-red-400 text-sm font-bold bg-red-900/30 px-4 py-2 rounded animate-pulse">
+           <div className="mb-6 text-red-400 text-sm font-bold bg-red-900/30 px-4 py-2 rounded animate-pulse border border-red-900/50">
              {error}
            </div>
         )}
@@ -99,7 +100,7 @@ const PinLock: React.FC<PinLockProps> = ({ mode, onUnlock, onSetPin, onCancelSet
              <button
                key={num}
                onClick={() => handleNumClick(num)}
-               className="h-16 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-2xl font-bold transition shadow-lg"
+               className="h-16 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-2xl font-bold transition shadow-lg border border-gray-700"
              >
                {num}
              </button>
@@ -111,7 +112,7 @@ const PinLock: React.FC<PinLockProps> = ({ mode, onUnlock, onSetPin, onCancelSet
            </div>
            <button
              onClick={() => handleNumClick(0)}
-             className="h-16 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-2xl font-bold transition shadow-lg"
+             className="h-16 rounded-full bg-gray-800 hover:bg-gray-700 active:bg-gray-600 text-2xl font-bold transition shadow-lg border border-gray-700"
            >
              0
            </button>
