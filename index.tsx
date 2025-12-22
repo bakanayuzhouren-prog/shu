@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -14,6 +13,8 @@ interface ErrorBoundaryState {
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   public state: ErrorBoundaryState = { hasError: false, error: null };
+  // Fix: Explicitly declare props to satisfy TypeScript compiler
+  readonly props!: ErrorBoundaryProps;
 
   static getDerivedStateFromError(error: any): ErrorBoundaryState {
     return { hasError: true, error };
