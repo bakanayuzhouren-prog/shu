@@ -3,9 +3,10 @@ import { GoogleGenAI } from "@google/genai";
 import { FormData, IllustrationStyle } from "../types";
 
 export const generateGreetingMessage = async (data: FormData): Promise<string> => {
-  const apiKey = process.env.API_KEY;
+  // Vite環境では import.meta.env.VITE_*** を使用します
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) {
-    return "【設定エラー】APIキーが設定されていません。VercelのDashboard > Settings > Environment Variables にて「API_KEY」を設定してください。";
+    return "【設定エラー】APIキーが設定されていません。VercelのDashboard > Settings > Environment Variables にて「VITE_API_KEY」を設定してください。";
   }
 
   const ai = new GoogleGenAI({ apiKey: apiKey });
@@ -32,9 +33,9 @@ export const generateGreetingMessage = async (data: FormData): Promise<string> =
 };
 
 export const transformImageToIllustration = async (base64Image: string, style: IllustrationStyle = 'standard'): Promise<string> => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) {
-    throw new Error("APIキーが設定されていません。Vercelの環境変数を確認してください。");
+    throw new Error("APIキーが設定されていません。Vercelの環境変数(VITE_API_KEY)を確認してください。");
   }
 
   const ai = new GoogleGenAI({ apiKey: apiKey });
@@ -67,7 +68,7 @@ export const transformImageToIllustration = async (base64Image: string, style: I
 };
 
 export const editImageWithPrompt = async (base64Image: string, promptText: string): Promise<string> => {
-  const apiKey = process.env.API_KEY;
+  const apiKey = import.meta.env.VITE_API_KEY;
   if (!apiKey) {
     throw new Error("APIキーが設定されていません。");
   }

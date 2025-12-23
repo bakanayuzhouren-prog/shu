@@ -1,5 +1,10 @@
 
 /// <reference types="vite/client" />
-/// <reference types="node" />
 
-// @types/node がインストールされているため、process.env の型は自動的に解決されます。
+interface ImportMetaEnv {
+  readonly VITE_API_KEY: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

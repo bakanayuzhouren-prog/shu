@@ -1,3 +1,4 @@
+
 # AI 引っ越し挨拶状メーカー 🏠✨
 
 Google Gemini APIを活用した、新築一戸建て向け引っ越し挨拶状作成アプリです。
@@ -19,8 +20,9 @@ Google Gemini APIを活用した、新築一戸建て向け引っ越し挨拶状
 
 2. **ローカルでの開発**
    `.env` ファイルを作成し、APIキーを設定します。
+   （Viteを使用しているため、接頭辞 `VITE_` が必要です）
    ```bash
-   API_KEY=your_api_key_here
+   VITE_API_KEY=your_api_key_here
    ```
    
    インストールと起動:
@@ -33,7 +35,7 @@ Google Gemini APIを活用した、新築一戸建て向け引っ越し挨拶状
    - GitHubにこのリポジトリをPushします。
    - Vercelで "New Project" からリポジトリをインポートします。
    - **Environment Variables** (環境変数) の設定で以下を追加します:
-     - Name: `API_KEY`
+     - Name: `VITE_API_KEY`
      - Value: (取得したGemini APIキー)
    - [Deploy] をクリックすれば完了です！
 
